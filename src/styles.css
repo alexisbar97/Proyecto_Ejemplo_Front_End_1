@@ -1,0 +1,45 @@
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders&display=swap');
+
+/* Estilos globales */
+body {
+  margin: 0;
+  font-family: 'Big Shoulders', sans-serif; /* Fuente global */
+  background-image: url('assets/data_base.png'); /* Fondo de la página */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efecto parallax */
+  color: #333; /* Color de texto predeterminado */
+}
+
+/* Contenedor principal */
+.header {
+  text-align: start;
+  padding: 20px;
+}
+
+/* Título */
+.title {
+  font-family: 'Big Shoulders', sans-serif; /* Usar la fuente Big Shoulders */
+  font-size: 3rem; /* Tamaño grande */
+  font-weight: bold; /* Negrita */
+  color: #0c116b; /* Color azul oscuro para mejorar contraste */
+  background: linear-gradient(90deg, #6a11cb, #2575fc); /* Gradiente azul elegante */
+  -webkit-background-clip: text; /* Aplicar el gradiente al texto */
+  background-clip: text;
+  letter-spacing: 2px; /* Espaciado entre letras */
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  animation: fadeIn 2s ease-in-out; /* Animación de entrada */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
