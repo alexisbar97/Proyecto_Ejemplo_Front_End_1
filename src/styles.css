@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Big Shoulders', sans-serif;
+  background-image: url('assets/data_base.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #333;
+  font-style: oblique;
+}
+
+.header {
+  text-align: start;
+  padding: 20px;
+  font-style: oblique;
+}
+
+.title {
+  font-family: 'Big Shoulders', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0c116b;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

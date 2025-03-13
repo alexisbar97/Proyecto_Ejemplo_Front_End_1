@@ -1,0 +1,97 @@
+<!-- Panel Superior -->
+<div class="header">
+  <h1 class="title">Gestión de Empleados</h1>
+</div>
+
+<!-- Contenedor Principal -->
+<div class="container">
+  <!-- Formulario para Agregar Empleados -->
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Agregar Empleado</mat-card-title>
+      <mat-card-subtitle>Ingresa los datos del empleado</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="empleadoForm" (ngSubmit)="agregarEmpleado()">
+
+        <!-- Campo de Nombre -->
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Nombre">
+          <mat-error *ngIf="empleadoForm.get('nombre')?.invalid && empleadoForm.get('nombre')?.touched">
+            El nombre es requerido.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Campo de Puesto -->
+        <mat-form-field appearance="fill">
+          <mat-label>Puesto</mat-label>
+          <input matInput formControlName="puesto" placeholder="Puesto">
+          <mat-error *ngIf="empleadoForm.get('puesto')?.invalid && empleadoForm.get('puesto')?.touched">
+            El puesto es requerido.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Campo de Salario -->
+        <mat-form-field appearance="fill">
+          <mat-label>Salario</mat-label>
+          <input matInput type="number" formControlName="salario" placeholder="Salario">
+          <mat-error *ngIf="empleadoForm.get('salario')?.invalid && empleadoForm.get('salario')?.touched">
+            El salario es requerido y debe ser mayor o igual a 0.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Botón de Agregar -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="empleadoForm.invalid">
+          Agregar
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Lista de Empleados -->
+  <mat-card class="list-card">
+    <mat-card-header>
+      <mat-card-title>Lista de Empleados</mat-card-title>
+      <mat-card-subtitle>Empleados registrados</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="empleados" class="mat-elevation-z8">
+
+        <!-- Columna Nombre -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let empleado">{{ empleado.nombre }}</td>
+        </ng-container>
+
+        <!-- Columna Puesto -->
+        <ng-container matColumnDef="puesto">
+          <th mat-header-cell *matHeaderCellDef>Puesto</th>
+          <td mat-cell *matCellDef="let empleado">{{ empleado.puesto }}</td>
+        </ng-container>
+
+        <!-- Columna Salario -->
+        <ng-container matColumnDef="salario">
+          <th mat-header-cell *matHeaderCellDef>Salario</th>
+          <td mat-cell *matCellDef="let empleado">{{ empleado.salario }} CLP</td>
+        </ng-container>
+
+        <!-- Columna Acciones -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let empleado">
+            <button mat-icon-button color="warn" (click)="eliminarEmpleado(empleado.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- Filas -->
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
